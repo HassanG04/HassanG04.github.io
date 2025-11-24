@@ -93,7 +93,7 @@ The site is intentionally simple (no heavy frameworks) but has a few dynamic tou
 
 ```text
 root/
-├── index.html               # Home
+├── home.html               # Home
 ├── about.html               # About Me
 ├── hobbies.html             # Hobbies
 ├── accomplishments.html     # Certifications & Projects
