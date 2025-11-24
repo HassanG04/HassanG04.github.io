@@ -1,162 +1,287 @@
 /* General Styles */
 /*This is the default block for the pages*/
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        background-color: #f8f9fa;
-        padding-top: 56px; /* For fixed navbar */
-    }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f8f9fa;
+    padding-top: 56px;
+    /* For fixed navbar */
+}
+
 /*This is the Dark-Mode block*/
-    body.dark-mode {
-        background-color: #392f55;
-        color: #f1f1f1;
-    }
+body.dark-mode {
+    background-color: #392f55;
+    color: #f1f1f1;
+}
 
 
-    /* Dark mode styles for cards and similar boxes */
-    body.dark-mode .card {
-        background-color: #1e2a38; /* A dark blue hue */
-        color: #ffffff; /* White text */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
+/* Dark mode styles for cards and similar boxes */
+body.dark-mode .card {
+    background-color: #1e2a38;
+    /* A dark blue hue */
+    color: #ffffff;
+    /* White text */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
 
-    /* If you have any contact-method boxes or similar: */
-    body.dark-mode .contact-method {
-        background-color: #1e2a38;
-        color: #ffffff;
-    }
+/* If you have any contact-method boxes or similar: */
+body.dark-mode .contact-method {
+    background-color: #1e2a38;
+    color: #ffffff;
+}
 
-    body.dark-mode .hero-section {
-        /* Replace with any color or gradient you like */
-        background: linear-gradient(135deg, #3b3b59, #1f1f38);
-        color: #ffffff; /* Ensures text remains legible on dark backgrounds */
-    }
+body.dark-mode .hero-section {
+    /* Replace with any color or gradient you like */
+    background: linear-gradient(135deg, #3b3b59, #1f1f38);
+    color: #ffffff;
+    /* Ensures text remains legible on dark backgrounds */
+}
 
-    /* Additional dark mode adjustments for any white containers */
-    body.dark-mode .image-wrapper,
-    body.dark-mode .profile-img,
-    body.dark-mode .profile-image {
-        background-color: transparent; /* or adjust as needed */
-    }
-    /* Style for dark mode toggle button (custom class dark-toggle) */
-    .dark-toggle {
-        background-color: #6e8efb !important;
-        border-color: #6e8efb !important;
-        color: white !important;
-    }
-    /* Active or pressed state: a slight scale-down for a tactile effect */
-    .dark-toggle:active {
-        transform: scale(0.95);
-    }
+/* Additional dark mode adjustments for any white containers */
+body.dark-mode .image-wrapper,
+body.dark-mode .profile-img,
+body.dark-mode .profile-image {
+    background-color: transparent;
+    /* or adjust as needed */
+}
 
-    body.dark-mode .dark-toggle {
-        background-color: #5a7df4 !important;
-        border-color: #5a7df4 !important;
-    }
+/* Style for dark mode toggle button (custom class dark-toggle) */
+.dark-toggle {
+    background-color: #6e8efb !important;
+    border-color: #6e8efb !important;
+    color: white !important;
+}
+
+/* Active or pressed state: a slight scale-down for a tactile effect */
+.dark-toggle:active {
+    transform: scale(0.95);
+}
+
+body.dark-mode .dark-toggle {
+    background-color: #5a7df4 !important;
+    border-color: #5a7df4 !important;
+}
+
 /*Text block*/
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 600;
-    }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
 
-    a {
-        text-decoration: none;
-        transition: all 0.3s ease;
-    }
+a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
 /*Navigation bar block*/
-    .navbar {
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
-    .navbar-brand {
-        font-weight: 700;
-        font-size: 1.5rem;
-    }
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
 /* Hero Section (the one in the home page) */
-    .hero-section {
-        padding: 100px 0;
-        background: linear-gradient(135deg, #6e8efb, #a777e3);
-        color: white;
-        margin-bottom: 30px;
+.hero-section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    color: white;
+    margin-bottom: 30px;
+}
+
+.profile-img {
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    height: auto;
+}
+
+/* Profile Image */
+/* Profile image wrapper (for hover + sparkles) */
+.profile-image-wrapper {
+    position: relative;
+    width: 300px;
+    /* same as max-width of image */
+    height: 300px;
+    /* forces circular wrapper */
+    margin: 20px auto 40px;
+    border-radius: 50%;
+    /* makes the wrapper itself circular */
+    overflow: visible;
+    /* let sparkles glow outside */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+
+/* Base profile image */
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #e8d0ff;
+    box-shadow: 0 0 12px rgba(148, 0, 211, 0.55);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+
+/* Purple aura behind (subtle when idle) */
+.profile-image-wrapper::before {
+    content: "";
+    position: absolute;
+    inset: -18px;
+    /* evenly expands glow around the circle */
+    border-radius: 50%;
+    /* MUST match wrapper now */
+    background:
+        radial-gradient(circle at 25% 0%, rgba(186, 104, 255, 0.9), transparent 60%),
+        radial-gradient(circle at 80% 80%, rgba(123, 31, 162, 0.9), transparent 60%);
+    opacity: 0;
+    filter: blur(12px);
+    pointer-events: none;
+    z-index: -1;
+    transition: opacity 0.25s ease, filter 0.25s ease;
+}
+
+/* Small spark particles */
+.profile-image-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: -28px;
+    border-radius: 50%;
+    /* ensures sparkles form a circular halo */
+    pointer-events: none;
+    z-index: -2;
+
+    background:
+        radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 35%, transparent 40%) 10% 20% / 6px 6px no-repeat,
+        radial-gradient(circle, rgba(224, 176, 255, 0.9) 0 35%, transparent 40%) 90% 10% / 7px 7px no-repeat,
+        radial-gradient(circle, rgba(207, 159, 255, 0.9) 0 35%, transparent 40%) 0% 80% / 8px 8px no-repeat,
+        radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 35%, transparent 40%) 100% 70% / 5px 5px no-repeat,
+        radial-gradient(circle, rgba(179, 136, 255, 0.9) 0 35%, transparent 40%) 50% 100% / 7px 7px no-repeat;
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+/* Hover: image pops, wrapper lifts, aura + sparkles appear */
+.profile-image-wrapper:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 18px 35px rgba(0, 0, 0, 0.25);
+}
+
+.profile-image-wrapper:hover .profile-image {
+    transform: scale(1.06);
+    box-shadow: 0 0 20px rgba(186, 104, 255, 0.9);
+}
+
+.profile-image-wrapper:hover::before {
+    opacity: 0.95;
+    filter: blur(14px);
+}
+
+.profile-image-wrapper:hover::after {
+    opacity: 1;
+    animation: profile-sparkle-flicker 0.6s infinite steps(2, end);
+}
+
+/* Electric-style flicker for sparkles */
+@keyframes profile-sparkle-flicker {
+    0% {
+        transform: translate(0, 0) scale(0.95);
+        opacity: 0.5;
     }
 
-    .profile-img {
-        border: 5px solid white;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        max-width: 300px;
-        height: auto;
+    25% {
+        transform: translate(1px, -1px) scale(1.0);
+        opacity: 1;
     }
-/* Profile Image */
-  .profile-image {
-    max-width: 300px;
-    width: 100%;
-    height: auto;
-    border-radius: 50%;
-    display: block;
-    border: 3px solid #e8d0ff;
-    box-shadow: 0 0 8px rgba(148, 0, 211, 0.5);
-    margin: 0 auto; /* Centers image within wrapper */
-  }
+
+    50% {
+        transform: translate(-1px, 1px) scale(0.98);
+        opacity: 0.7;
+    }
+
+    75% {
+        transform: translate(1px, 0px) scale(1.02);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translate(0, 0) scale(0.95);
+        opacity: 0.5;
+    }
+}
+
 
 /* Cards (boxes)*/
-    .card {
-        border: none;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 
 /* Buttons (to make them more dynamic and modern) */
-    .btn {
-        padding: 10px 20px;
-        border-radius: 30px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-    }
+.btn {
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
 
-    .btn-primary {
-        background-color: #6e8efb;
-        border-color: #6e8efb;
-    }
+.btn-primary {
+    background-color: #6e8efb;
+    border-color: #6e8efb;
+}
 
-    .btn-primary:hover {
-        background-color: #5a7df4;
-        border-color: #5a7df4;
-    }
+.btn-primary:hover {
+    background-color: #5a7df4;
+    border-color: #5a7df4;
+}
 
-    .btn-outline-primary {
-        color: #6e8efb;
-        border-color: #6e8efb;
-    }
+.btn-outline-primary {
+    color: #6e8efb;
+    border-color: #6e8efb;
+}
 
-    .btn-outline-primary:hover {
-        background-color: #6e8efb;
-        color: white;
-    }
+.btn-outline-primary:hover {
+    background-color: #6e8efb;
+    color: white;
+}
 
 /* Contact Form block */
-    .contact-method {
-        background-color: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-    }
+.contact-method {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
 
-    .contact-method:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    }
+.contact-method:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
 
 /* Footer block */
-    footer {
-        margin-top: 50px;
-    }
+footer {
+    margin-top: 50px;
+}
 
 .social-links a {
     display: inline-block;
@@ -165,43 +290,49 @@
 }
 
 /* Responsive adjustments */
-    @media (max-width: 768px) {
-        .hero-section {
-            text-align: center;
-            padding: 80px 0;
-        }
-        
-        .profile-img {
-            margin-bottom: 30px;
-        }
-        
-        .btn-group {
-            justify-content: center;
-        }
+@media (max-width: 768px) {
+    .hero-section {
+        text-align: center;
+        padding: 80px 0;
     }
+
+    .profile-img {
+        margin-bottom: 30px;
+    }
+
+    .btn-group {
+        justify-content: center;
+    }
+}
+
 /* Hobby image container - defines the visible area */
 .hobby-img-container {
-    height: 420px; /* Fixed height */
+    height: 420px;
+    /* Fixed height */
     width: 100%;
-    overflow: hidden; /* Clip anything outside container */
+    overflow: hidden;
+    /* Clip anything outside container */
     position: relative;
-  }
-  
-  /* Image styling - will be clipped but not scaled down */
-  .hobby-img {
+}
+
+/* Image styling - will be clipped but not scaled down */
+.hobby-img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Cover the container, maintaining aspect ratio */
-    object-position: center; /* Always center the image */
-    transition: transform 0.3s ease; /* For optional hover effect */
-  }
-  
-  /* Optional zoom effect on hover */
-  .card:hover .hobby-img {
-    transform: scale(1.05);
-  }
+    object-fit: cover;
+    /* Cover the container, maintaining aspect ratio */
+    object-position: center;
+    /* Always center the image */
+    transition: transform 0.3s ease;
+    /* For optional hover effect */
+}
 
-  .social-btn {
+/* Optional zoom effect on hover */
+.card:hover .hobby-img {
+    transform: scale(1.05);
+}
+
+.social-btn {
     background-color: #4a464f;
     color: white;
     width: 40px;
@@ -220,19 +351,23 @@
 }
 
 .social-btn:hover {
-    background-color: #ffffff;
+    background-color: #ffffff;
 }
+
 .image-wrapper {
-    background-color: #f0e0ff; /* Light purple background */
+    background-color: #f0e0ff;
+    /* Light purple background */
     padding: 20px;
     border-radius: 50%;
     display: inline-block;
     box-shadow: 0 0 10px rgba(148, 0, 211, 0.3);
     margin: 20px auto;
-    text-align: center; /* Ensures image centering */
-  }
+    text-align: center;
+    /* Ensures image centering */
+}
+
 /*The learn more button block*/
-  .learn-more-btn {
+.learn-more-btn {
     position: absolute;
     top: 10px;
     right: 10px;
@@ -255,4 +390,318 @@
 
 .learn-more-btn:hover {
     background: rgba(0, 0, 0, 0.9);
+}
+
+/* Accomplishments page */
+.accomplishment-card {
+    overflow: hidden;
+}
+
+.accomplishment-img {
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Keep project thumbnails consistent */
+.project-thumb-wrapper {
+    height: 200px;
+    overflow: hidden;
+}
+
+/* Small tweak so the “View Accomplishments” button looks ok on hero */
+.hero-section .btn-outline-light {
+    border-width: 2px;
+    font-weight: 600;
+}
+
+/* Chatbot bubble + window */
+.chatbot-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #6e8efb;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    z-index: 9999;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.chatbot-bubble:active {
+    cursor: pointer;
+}
+
+.chatbot-window {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 320px;
+    max-width: 90vw;
+    background: #1e2a38;
+    color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    z-index: 9998;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+
+
+.chatbot-header {
+    background: #6e8efb;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+}
+
+.chatbot-body {
+    padding: 10px 12px;
+    max-height: 260px;
+    overflow-y: auto;
+    background: #1e2a38;
+}
+
+
+.chatbot-message.bot {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+}
+
+/* Dark mode: bubble/window already fit, but keep visibility consistent */
+body.dark-mode .chatbot-window {
+    background: #111827;
+}
+
+/* Fancy hover for "Accomplishments" title */
+/* Electric yellow "Accomplishments" title */
+.page-title-accomplishments {
+    position: relative;
+    display: inline-block;
+    /* centered by parent .text-center */
+    font-weight: 800;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+
+    /* PURE yellow + strong outline so it’s visible on light & dark */
+    color: #ffeb3b;
+    text-shadow:
+        0 0 2px #000000,
+        0 0 5px rgba(255, 193, 7, 0.9),
+        0 0 12px rgba(255, 235, 59, 1),
+        0 0 20px rgba(255, 235, 59, 0.9);
+
+    padding: 0.1em 0.15em;
+    /* minimal – we don't want a pill/button */
+    transition:
+        transform 0.18s ease-out,
+        text-shadow 0.18s ease-out;
+}
+
+/* Glow AURA behind the text (pure yellow/orange, no white) */
+.page-title-accomplishments::before {
+    content: "";
+    position: absolute;
+    inset: -6px -18px;
+    border-radius: 999px;
+    background:
+        radial-gradient(circle at 50% 50%, rgba(255, 235, 59, 0.85), transparent 60%),
+        radial-gradient(circle at 20% 0%, rgba(255, 193, 7, 0.9), transparent 55%);
+    opacity: 0;
+    filter: blur(7px);
+    pointer-events: none;
+    z-index: -1;
+    transition:
+        opacity 0.18s ease-out,
+        filter 0.18s ease-out;
+}
+
+/* SPARKS layer – small shards around the text */
+.page-title-accomplishments::after {
+    content: "";
+    position: absolute;
+    inset: -16px -26px;
+    pointer-events: none;
+    z-index: -2;
+
+    /* multiple tiny "spark" dots / shards */
+    background:
+        radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 40%, transparent 45%) 10% 0% / 7px 7px no-repeat,
+        radial-gradient(circle, rgba(255, 248, 200, 0.95) 0 40%, transparent 45%) 90% 10% / 6px 6px no-repeat,
+        radial-gradient(circle, rgba(255, 235, 59, 0.95) 0 40%, transparent 45%) 0% 80% / 8px 8px no-repeat,
+        radial-gradient(circle, rgba(255, 215, 0, 0.95) 0 40%, transparent 45%) 100% 60% / 7px 7px no-repeat,
+        radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 40%, transparent 45%) 50% 100% / 5px 5px no-repeat;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.12s ease-out;
+}
+
+/* Hover: POP + stronger electric glow + visible sparks */
+.page-title-accomplishments:hover {
+    transform: translateY(-3px) scale(1.06);
+    text-shadow:
+        0 0 3px #000000,
+        0 0 7px rgba(255, 193, 7, 1),
+        0 0 16px rgba(255, 235, 59, 1),
+        0 0 26px rgba(255, 235, 59, 1),
+        0 0 40px rgba(255, 241, 118, 0.95);
+}
+
+.page-title-accomplishments:hover::before {
+    opacity: 0.95;
+    filter: blur(9px);
+}
+
+/* Sparks flicker / jitter on hover to feel like electricity */
+.page-title-accomplishments:hover::after {
+    opacity: 1;
+    animation: sparks-flicker 0.45s infinite steps(2, end);
+}
+
+/* choppy, electric-style flicker + slight movement */
+@keyframes sparks-flicker {
+    0% {
+        transform: translate(0, 0) scale(0.95) rotate(0deg);
+        opacity: 0.5;
+    }
+
+    25% {
+        transform: translate(1px, -1px) scale(1.0) rotate(2deg);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(-1px, 1px) scale(0.98) rotate(-2deg);
+        opacity: 0.6;
+    }
+
+    75% {
+        transform: translate(1px, 0px) scale(1.02) rotate(1deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: translate(0, 0) scale(0.95) rotate(0deg);
+        opacity: 0.5;
+    }
+}
+
+/* ========== Accomplishments: Certifications hover effect ========== */
+
+/* keep certificates tidy but ready to expand */
+.cert-card {
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-card .accomplishment-img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, height 0.3s ease;
+}
+
+/* on hover: card lifts + image expands and zooms out slightly */
+.cert-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+}
+
+.cert-card:hover .accomplishment-img {
+    height: 260px;
+    /* “expand” vertically */
+    object-fit: cover;
+    /* keep aspect sensible */
+    transform: scale(1.05);
+    /* small zoom to avoid ugly borders */
+}
+
+/* ========== Accomplishments: Projects hover effect ========== */
+
+.project-card {
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card .project-thumb-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.project-card .accomplishment-img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Overlay text */
+.project-card .project-thumb-wrapper::after {
+    content: "Show me the project on Github";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-align: center;
+
+    color: #fff;
+    background: radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.12), transparent 55%), rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Hover behavior: card grows, thumbnail blurs, overlay appears */
+.project-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
+}
+
+.project-card:hover .accomplishment-img {
+    transform: scale(1.06);
+    filter: blur(3px) brightness(0.7);
+}
+
+.project-card:hover .project-thumb-wrapper::after {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Main hero buttons (About + CV) */
+.hero-main-btn {
+    border-radius: 999px;
+    padding: 10px 22px;
+    font-weight: 600;
+}
+
+/* Green CV button */
+.cv-btn {
+    background-color: #34c759;
+    border-color: #34c759;
+    color: #ffffff;
+}
+
+.cv-btn:hover {
+    background-color: #2fa149;
+    border-color: #2fa149;
+}
+
+/* keep icon spaced */
+.cv-btn i {
+    margin-right: 6px;
 }

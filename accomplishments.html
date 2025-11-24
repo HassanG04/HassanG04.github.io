@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-key="Accomplishments | Hassan's portfolio">Accomplishments | Hassan's portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html" data-key="Hassan's portfolio">Hassan's portfolio</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="home.html" data-key="Home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html" data-key="About">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="hobbies.html" data-key="Hobbies">Hobbies</a></li>
+          <li class="nav-item"><a class="nav-link active" href="accomplishments.html" data-key="Accomplishments">Accomplishments</a></li>
+          <li class="nav-item">
+            <button id="darkModeToggle" class="btn btn-primary dark-toggle"><i class="fas fa-sun"></i></button>
+          </li>
+          <!-- <li class="nav-item">
+            <button id="translateBtn" class="btn btn-outline-primary ms-2">Translate to Arabic</button>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<main class="container mt-5 pt-5">
+  <div class="text-center mb-5">
+    <h1 class="page-title-accomplishments" data-key="Accomplishments">
+      Accomplishments
+    </h1>
+  </div>
+
+
+<!-- Certifications -->
+<section class="mb-5">
+  <h2 class="mb-4" data-key="Certifications">Certifications</h2>
+
+  <div class="row g-4">
+
+    <!-- CCNA -->
+    <div class="col-md-4">
+      <div class="card accomplishment-card cert-card h-100">
+        <img src="images/cert_ccna.png" class="card-img-top accomplishment-img" alt="CCNA Certificate">
+        <div class="card-body">
+          <h5 class="card-title">CCNA – Cisco Certified Network Associate</h5>
+          <p class="card-text">
+            Core networking: routing, switching, IP, subnetting, and basic network security.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cellula NLP Internship -->
+    <div class="col-md-4">
+      <div class="card accomplishment-card cert-card h-100">
+        <img src="images/cellula_nlp.png" class="card-img-top accomplishment-img" alt="Cellula Internship">
+        <div class="card-body">
+          <h5 class="card-title">Cellula – NLP Internship</h5>
+          <p class="card-text">
+            Completed NLP-focused internship training: text preprocessing, embeddings, transformers, and project deployment.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ICPC Achievement -->
+    <div class="col-md-4">
+      <div class="card accomplishment-card cert-card h-100">
+        <img src="images/icpc.png" class="card-img-top accomplishment-img" alt="ICPC">
+        <div class="card-body">
+          <h5 class="card-title">ICPC Competitive Programming</h5>
+          <p class="card-text">
+            Reached 25th place and qualified in ICPC regionals. Specialized in problem solving and algorithmic challenges.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- Projects -->
+<section class="mb-5">
+  <h2 class="mb-4" data-key="Projects">Projects</h2>
+
+  <div class="row g-4">
+
+    <!-- River Flood Segmentation -->
+    <div class="col-md-4">
+      <div class="card accomplishment-card project-card h-100 position-relative">
+        <div class="project-thumb-wrapper">
+          <img src="images/river_flood.jpg" class="card-img-top accomplishment-img" alt="River Flood Project">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">River Flood Protection</h5>
+          <p class="card-text">
+            Developed a U-Net Mini segmentation model for detecting river flooding from satellite images.
+            Built a Flask interface for uploading images and returning flood masks.
+          </p>
+          <a href="https://github.com/HassanG04/River-Flood-Prediction"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shoplifting Detection -->
+    <div class="col-md-4">
+      <div class="card accomplishment-card project-card h-100 position-relative">
+        <div class="project-thumb-wrapper">
+          <img src="images/shoplifting.png" class="card-img-top accomplishment-img" alt="Shoplifting Detection">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Shoplifting Detection</h5>
+          <p class="card-text">
+            Trained a GRU-based action recognition model on CCTV frame sequences to detect suspicious movement.
+            Deployed with Django and integrated real-time inference on video streams.
+          </p>
+          <a href="https://github.com/HassanG04/ShopLifting_Detection"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portfolio Website -->
+    <div class="col-md-4">
+      <div class="card accomplishment-card project-card h-100 position-relative">
+        <div class="project-thumb-wrapper">
+          <img src="images/portfolio.png" class="card-img-top accomplishment-img" alt="Portfolio Website">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">This Portfolio Website</h5>
+          <p class="card-text">
+            Built a responsive personal portfolio using HTML, CSS, and JavaScript to showcase projects, certifications, and AI-engineering background.
+          </p>
+        <a href="https://github.com/HassanG04/HassanG04.github.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="stretched-link"></a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+  </main>
+
+  <footer class="bg-dark text-white text-center py-4">
+    <div class="container">
+      <p>&copy; Hassan's portfolio. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Chatbot UI (same as other pages, see section 4) -->
+<div id="chatbot-window" class="chatbot-window d-none">
+   <div class="chatbot-header">
+      <span>Hassan-bot (WIP)</span>
+      <button id="chatbot-close" class="btn-close btn-close-white btn-sm"></button>
+    </div>
+    <div class="chatbot-body">
+      <div class="chatbot-message bot">
+        I am still learning Hassan's behavior since he's kinda quiet atm...
+        <br>
+        (I didn't make a chatbot yet but I will make it... &lt;eventually&gt;)
+      </div>
+    </div>
+</div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+  
+</body>
+</html>
