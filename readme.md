@@ -8,7 +8,7 @@ The site is intentionally simple (no heavy frameworks) but has a few dynamic tou
 
 ## Live Demo
 
-> (Add link here once you deploy to GitHub Pages or another host.)
+> https://hassang04.github.io/
 
 ---
 
