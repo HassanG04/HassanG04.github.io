@@ -1,189 +1,362 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="images/thumbnail.jpg">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-key="Accomplishments | Hassan's portfolio">Accomplishments | Hassan's portfolio</title>
+  <title>Accomplishments | Hassan Gebril – AI Engineer</title>
+  <meta name="description" content="Hassan Gebril's certifications, projects, and achievements — CCNA, NLP internship, ICPC, AI projects and more." />
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="images/thumbnail.png" />
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+  <!-- PAGE LOADER -->
+  <div id="page-loader">
+    <div class="loader-inner">
+      <span class="loader-logo">HG.</span>
+      <div class="loader-ring"></div>
+    </div>
+  </div>
+
+  <!-- PARTICLE CANVAS -->
+  <canvas id="particle-canvas"></canvas>
+
+
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html" data-key="Hassan's portfolio">Hassan's portfolio</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="index.html">HG.</a>
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="home.html" data-key="Home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html" data-key="About">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="hobbies.html" data-key="Hobbies">Hobbies</a></li>
-          <li class="nav-item"><a class="nav-link active" href="accomplishments.html" data-key="Accomplishments">Accomplishments</a></li>
-          <li class="nav-item">
-            <button id="darkModeToggle" class="btn btn-primary dark-toggle"><i class="fas fa-sun"></i></button>
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="hobbies.html">Hobbies</a></li>
+          <li class="nav-item"><a class="nav-link active" href="accomplishments.html">Accomplishments</a></li>
+          <li class="nav-item ms-2">
+            <button id="darkModeToggle" class="dark-toggle">
+              <i class="fas fa-moon"></i>
+            </button>
           </li>
-          <!-- <li class="nav-item">
-            <button id="translateBtn" class="btn btn-outline-primary ms-2">Translate to Arabic</button>
-          </li> -->
         </ul>
       </div>
     </div>
   </nav>
 
-<main class="container mt-5 pt-5">
-  <div class="text-center mb-5">
-    <h1 class="page-title-accomplishments" data-key="Accomplishments">
-      Accomplishments
-    </h1>
-  </div>
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="container text-center">
+      <span class="section-tag reveal">Track Record</span>
+      <h1 class="text-center reveal delay-1">
+        <span class="page-title-accomplishments">Accomplishments</span>
+      </h1>
+      <p class="reveal delay-2" style="margin-top:14px;">
+        Certifications, projects, and milestones that define my journey.
+      </p>
+    </div>
+  </section>
 
+  <main class="container pb-5">
 
-<!-- Certifications -->
-<section class="mb-5">
-  <h2 class="mb-4" data-key="Certifications">Certifications</h2>
-
-  <div class="row g-4">
-
-    <!-- CCNA -->
-    <div class="col-md-4">
-      <div class="card accomplishment-card cert-card h-100">
-        <img src="images/cert_ccna.png" class="card-img-top accomplishment-img" alt="CCNA Certificate">
-        <div class="card-body">
-          <h5 class="card-title">CCNA – Cisco Certified Network Associate</h5>
-          <p class="card-text">
-            Core networking: routing, switching, IP, subnetting, and basic network security.
-          </p>
+    <!-- ===== CERTIFICATIONS ===== -->
+    <section class="mb-2">
+      <div class="d-flex align-items-center gap-3 mb-4 reveal">
+        <div style="width:44px;height:44px;border-radius:14px;
+                    background:rgba(139,92,246,.15);border:1px solid rgba(139,92,246,.25);
+                    display:flex;align-items:center;justify-content:center;
+                    font-size:1.2rem;color:var(--accent-purple);">
+          <i class="fas fa-certificate"></i>
+        </div>
+        <div>
+          <span class="section-tag" style="margin-bottom:2px;">Credentials</span>
+          <h2 class="section-heading mb-0">Certifications</h2>
         </div>
       </div>
-    </div>
 
-    <!-- Cellula NLP Internship -->
-    <div class="col-md-4">
-      <div class="card accomplishment-card cert-card h-100">
-        <img src="images/cellula_nlp.png" class="card-img-top accomplishment-img" alt="Cellula Internship">
-        <div class="card-body">
-          <h5 class="card-title">Cellula – NLP Internship</h5>
-          <p class="card-text">
-            Completed NLP-focused internship training: text preprocessing, embeddings, transformers, and project deployment.
-          </p>
+      <div class="row g-4">
+
+        <!-- CCNA -->
+        <div class="col-md-4 reveal delay-1">
+          <div class="cert-card card h-100">
+            <div style="position:relative;overflow:hidden;">
+              <img src="images/cert_ccna.png"
+                   class="accomplishment-img" alt="CCNA Certificate" />
+              <div style="position:absolute;top:14px;right:14px;
+                          background:rgba(251,146,60,.9);backdrop-filter:blur(8px);
+                          color:#fff;padding:4px 12px;border-radius:999px;
+                          font-size:.7rem;font-weight:700;letter-spacing:.06em;">
+                CISCO
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">CCNA – Cisco Certified Network Associate</h5>
+              <p class="card-text">
+                Core networking: routing, switching, IP addressing, subnetting, and basic network security.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag flask">Networking</span>
+                <span class="tech-tag web">TCP/IP</span>
+                <span class="tech-tag flask">Security</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cellula NLP -->
+        <div class="col-md-4 reveal delay-2">
+          <div class="cert-card card h-100">
+            <div style="position:relative;overflow:hidden;">
+              <img src="images/cellula_nlp.png"
+                   class="accomplishment-img" alt="Cellula Internship" />
+              <div style="position:absolute;top:14px;right:14px;
+                          background:rgba(139,92,246,.9);backdrop-filter:blur(8px);
+                          color:#fff;padding:4px 12px;border-radius:999px;
+                          font-size:.7rem;font-weight:700;letter-spacing:.06em;">
+                INTERNSHIP
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Cellula Robotics – NLP Internship</h5>
+              <p class="card-text">
+                Text preprocessing, word embeddings, transformer architectures, and deploying NLP pipelines.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag ai">NLP</span>
+                <span class="tech-tag python">Python</span>
+                <span class="tech-tag ai">Transformers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ICPC -->
+        <div class="col-md-4 reveal delay-3">
+          <div class="cert-card card h-100">
+            <div style="position:relative;overflow:hidden;">
+              <img src="images/icpc.png"
+                   class="accomplishment-img" alt="ICPC Achievement" />
+              <div style="position:absolute;top:14px;right:14px;
+                          background:rgba(34,211,238,.9);backdrop-filter:blur(8px);
+                          color:#000;padding:4px 12px;border-radius:999px;
+                          font-size:.7rem;font-weight:700;letter-spacing:.06em;">
+                25th PLACE
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">ICPC – Competitive Programming</h5>
+              <p class="card-text">
+                Reached 25th place and qualified in ICPC regionals. Specialised in algorithmic problem-solving.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag web">Algorithms</span>
+                <span class="tech-tag python">C++</span>
+                <span class="tech-tag web">Data Structures</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="section-divider"></div>
+
+    <!-- ===== PROJECTS ===== -->
+    <section>
+      <div class="d-flex align-items-center gap-3 mb-4 reveal">
+        <div style="width:44px;height:44px;border-radius:14px;
+                    background:rgba(34,211,238,.15);border:1px solid rgba(34,211,238,.25);
+                    display:flex;align-items:center;justify-content:center;
+                    font-size:1.2rem;color:var(--accent-cyan);">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <div>
+          <span class="section-tag" style="margin-bottom:2px;">Built &amp; Shipped</span>
+          <h2 class="section-heading mb-0">Projects</h2>
         </div>
       </div>
-    </div>
 
-    <!-- ICPC Achievement -->
-    <div class="col-md-4">
-      <div class="card accomplishment-card cert-card h-100">
-        <img src="images/icpc.png" class="card-img-top accomplishment-img" alt="ICPC">
-        <div class="card-body">
-          <h5 class="card-title">ICPC Competitive Programming</h5>
-          <p class="card-text">
-            Reached 25th place and qualified in ICPC regionals. Specialized in problem solving and algorithmic challenges.
-          </p>
+      <div class="row g-4">
+
+        <!-- River Flood -->
+        <div class="col-md-4 reveal delay-1">
+          <div class="project-card card h-100">
+            <div class="project-thumb-wrapper">
+              <img src="images/river_flood.jpg"
+                   class="accomplishment-img" alt="River Flood Segmentation" />
+              <div class="project-overlay">
+                <a href="https://github.com/HassanG04/River-Flood-Prediction"
+                   target="_blank" rel="noopener" class="project-overlay-btn">
+                  <i class="fab fa-github"></i> View on GitHub
+                </a>
+              </div>
+              <!-- Difficulty badge -->
+              <div style="position:absolute;top:14px;left:14px;
+                          background:rgba(52,211,153,.9);backdrop-filter:blur(8px);
+                          color:#000;padding:4px 12px;border-radius:999px;
+                          font-size:.7rem;font-weight:700;letter-spacing:.06em;">
+                <i class="fas fa-satellite me-1"></i> CV PROJECT
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">River Flood Protection</h5>
+              <p class="card-text">
+                U-Net Mini segmentation model detecting river flooding from satellite imagery.
+                Flask web interface for real-time image upload and flood mask generation.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag python">Python</span>
+                <span class="tech-tag cv">U-Net</span>
+                <span class="tech-tag flask">Flask</span>
+                <span class="tech-tag ai">PyTorch</span>
+              </div>
+            </div>
+            <a href="https://github.com/HassanG04/River-Flood-Prediction"
+               target="_blank" rel="noopener" class="stretched-link"></a>
+          </div>
         </div>
+
+        <!-- Shoplifting Detection -->
+        <div class="col-md-4 reveal delay-2">
+          <div class="project-card card h-100">
+            <div class="project-thumb-wrapper">
+              <img src="images/shoplifting.png"
+                   class="accomplishment-img" alt="Shoplifting Detection" />
+              <div class="project-overlay">
+                <a href="https://github.com/HassanG04/ShopLifting_Detection"
+                   target="_blank" rel="noopener" class="project-overlay-btn">
+                  <i class="fab fa-github"></i> View on GitHub
+                </a>
+              </div>
+              <div style="position:absolute;top:14px;left:14px;
+                          background:rgba(244,114,182,.9);backdrop-filter:blur(8px);
+                          color:#fff;padding:4px 12px;border-radius:999px;
+                          font-size:.7rem;font-weight:700;letter-spacing:.06em;">
+                <i class="fas fa-video me-1"></i> CV PROJECT
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Shoplifting Detection</h5>
+              <p class="card-text">
+                GRU-based action recognition model trained on CCTV frame sequences to flag suspicious
+                movement. Django deployment with real-time video inference.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag python">Python</span>
+                <span class="tech-tag cv">GRU</span>
+                <span class="tech-tag django">Django</span>
+                <span class="tech-tag ai">Keras</span>
+              </div>
+            </div>
+            <a href="https://github.com/HassanG04/ShopLifting_Detection"
+               target="_blank" rel="noopener" class="stretched-link"></a>
+          </div>
+        </div>
+
+        <!-- Portfolio Website -->
+        <div class="col-md-4 reveal delay-3">
+          <div class="project-card card h-100">
+            <div class="project-thumb-wrapper">
+              <img src="images/portfolio.png"
+                   class="accomplishment-img" alt="Portfolio Website" />
+              <div class="project-overlay">
+                <a href="https://github.com/HassanG04/HassanG04.github.io"
+                   target="_blank" rel="noopener" class="project-overlay-btn">
+                  <i class="fab fa-github"></i> View on GitHub
+                </a>
+              </div>
+              <div style="position:absolute;top:14px;left:14px;
+                          background:rgba(139,92,246,.9);backdrop-filter:blur(8px);
+                          color:#fff;padding:4px 12px;border-radius:999px;
+                          font-size:.7rem;font-weight:700;letter-spacing:.06em;">
+                <i class="fas fa-globe me-1"></i> WEB PROJECT
+              </div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">This Portfolio Website</h5>
+              <p class="card-text">
+                A responsive, dark-mode personal portfolio showcasing projects, certifications,
+                and AI engineering work — with particle animations and glassmorphism design.
+              </p>
+              <div class="tech-tags">
+                <span class="tech-tag web">HTML</span>
+                <span class="tech-tag web">CSS</span>
+                <span class="tech-tag web">JavaScript</span>
+                <span class="tech-tag ai">Design</span>
+              </div>
+            </div>
+            <a href="https://github.com/HassanG04/HassanG04.github.io"
+               target="_blank" rel="noopener" class="stretched-link"></a>
+          </div>
+        </div>
+
       </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-5 pt-3 reveal">
+      <p style="color:var(--text-secondary);margin-bottom:20px;font-size:1.05rem;">
+        Like what you see? Let's build something together.
+      </p>
+      <a href="https://www.linkedin.com/in/hassan-gebrill-98a08a299/"
+         target="_blank" class="btn btn-primary me-3">
+        <i class="fab fa-linkedin me-2"></i>Connect on LinkedIn
+      </a>
+      <a href="https://drive.google.com/drive/folders/1PpwyqrEFpiQ_cHfw4pXXlBEPmE6P9rpv?usp=sharing"
+         target="_blank" class="btn btn-cv">
+        <i class="fas fa-file-alt"></i> Download CV
+      </a>
     </div>
-
-  </div>
-</section>
-
-
-<!-- Projects -->
-<section class="mb-5">
-  <h2 class="mb-4" data-key="Projects">Projects</h2>
-
-  <div class="row g-4">
-
-    <!-- River Flood Segmentation -->
-    <div class="col-md-4">
-      <div class="card accomplishment-card project-card h-100 position-relative">
-        <div class="project-thumb-wrapper">
-          <img src="images/river_flood.jpg" class="card-img-top accomplishment-img" alt="River Flood Project">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">River Flood Protection</h5>
-          <p class="card-text">
-            Developed a U-Net Mini segmentation model for detecting river flooding from satellite images.
-            Built a Flask interface for uploading images and returning flood masks.
-          </p>
-          <a href="https://github.com/HassanG04/River-Flood-Prediction"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="stretched-link"></a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Shoplifting Detection -->
-    <div class="col-md-4">
-      <div class="card accomplishment-card project-card h-100 position-relative">
-        <div class="project-thumb-wrapper">
-          <img src="images/shoplifting.png" class="card-img-top accomplishment-img" alt="Shoplifting Detection">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Shoplifting Detection</h5>
-          <p class="card-text">
-            Trained a GRU-based action recognition model on CCTV frame sequences to detect suspicious movement.
-            Deployed with Django and integrated real-time inference on video streams.
-          </p>
-          <a href="https://github.com/HassanG04/ShopLifting_Detection"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="stretched-link"></a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Portfolio Website -->
-    <div class="col-md-4">
-      <div class="card accomplishment-card project-card h-100 position-relative">
-        <div class="project-thumb-wrapper">
-          <img src="images/portfolio.png" class="card-img-top accomplishment-img" alt="Portfolio Website">
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">This Portfolio Website</h5>
-          <p class="card-text">
-            Built a responsive personal portfolio using HTML, CSS, and JavaScript to showcase projects, certifications, and AI-engineering background.
-          </p>
-        <a href="https://github.com/HassanG04/HassanG04.github.io"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="stretched-link"></a>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
 
   </main>
 
-  <footer class="bg-dark text-white text-center py-4">
-    <div class="container">
-      <p>&copy; Hassan's portfolio. All rights reserved.</p>
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container text-center">
+      <span class="footer-brand">HG.</span>
+      <p class="footer-tagline">Hassan Gebril — AI Engineer &amp; Creative Builder</p>
+      <div class="footer-social justify-content-center">
+        <a href="https://www.linkedin.com/in/hassan-gebrill-98a08a299/" target="_blank" class="social-btn linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/HassanG04" target="_blank" class="social-btn github">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.youtube.com/@Hassan_G04" target="_blank" class="social-btn youtube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+      <div class="footer-divider"></div>
+      <p class="footer-copy">&copy; 2025 Hassan's Portfolio. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- Chatbot UI (same as other pages, see section 4) -->
-<div id="chatbot-window" class="chatbot-window d-none">
-   <div class="chatbot-header">
-      <span>Hassan-bot (WIP)</span>
+  <!-- CHATBOT -->
+  <div id="chatbot-bubble" class="chatbot-bubble"><i class="fas fa-comments"></i></div>
+  <div id="chatbot-window" class="chatbot-window d-none">
+    <div class="chatbot-header">
+      <span><i class="fas fa-robot me-2"></i>Hassan-bot (WIP)</span>
       <button id="chatbot-close" class="btn-close btn-close-white btn-sm"></button>
     </div>
     <div class="chatbot-body">
       <div class="chatbot-message bot">
-        I am still learning Hassan's behavior since he's kinda quiet atm...
-        <br>
-        (I didn't make a chatbot yet but I will make it... &lt;eventually&gt;)
+        Hey! I'm still learning Hassan's ways... 🤖<br />
+        (A proper chatbot is coming — eventually!)
       </div>
     </div>
-</div>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>
-  
 </body>
 </html>

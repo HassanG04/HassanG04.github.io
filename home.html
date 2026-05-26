@@ -1,171 +1,339 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="images/thumbnail.jpg">
-  <!-- Open Graph Tags -->
-<meta property="og:title" content="Hassan Gebril – AI Engineer | Portfolio" />
-<meta property="og:description" content="Explore my projects, certifications, AI work, and personal achievements." />
-<meta property="og:image" content="https://hassang04.github.io/images/thumbnail.png" />
-<meta property="og:url" content="https://hassang04.github.io/" />
-<meta property="og:type" content="website" />
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Hassan Gebril – AI Engineer | Portfolio" />
-<meta name="twitter:description" content="Explore my projects, certifications, AI work, and personal achievements." />
-<meta name="twitter:image" content="https://hassang04.github.io/images/thumbnail.png" />
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-key="My Portfolio">My Portfolio</title>
+  <title>Hassan Gebril – AI Engineer | Portfolio</title>
+  <meta name="description" content="Hassan Gebril – AI Engineer, ML Developer & creative problem solver. Explore projects, certifications and achievements." />
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="Hassan Gebril – AI Engineer | Portfolio" />
+  <meta property="og:description" content="Explore my projects, certifications, AI work, and personal achievements." />
+  <meta property="og:image"       content="https://hassang04.github.io/images/thumbnail.png" />
+  <meta property="og:url"         content="https://hassang04.github.io/" />
+  <meta property="og:type"        content="website" />
+  <meta name="twitter:card"       content="summary_large_image" />
+  <meta name="twitter:title"      content="Hassan Gebril – AI Engineer | Portfolio" />
+  <meta name="twitter:image"      content="https://hassang04.github.io/images/thumbnail.png" />
+
+  <link rel="icon"             type="image/x-icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="images/thumbnail.png" />
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+  <!-- PAGE LOADER -->
+  <div id="page-loader">
+    <div class="loader-inner">
+      <span class="loader-logo">HG.</span>
+      <div class="loader-ring"></div>
+    </div>
+  </div>
+
+  <!-- PARTICLE CANVAS -->
+  <canvas id="particle-canvas"></canvas>
+
+
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="#" data-key="Hassan's portfolio">Hassan's portfolio</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="index.html">HG.</a>
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link active" href="#" data-key="Home">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html" data-key="About">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="hobbies.html" data-key="Hobbies">Hobbies</a></li>
-          <li class="nav-item"><a class="nav-link" href="accomplishments.html" data-key="Accomplishments">Accomplishments</a></li>
-          <li class="nav-item">
-            <button id="darkModeToggle" class="btn btn-primary dark-toggle"><i class="fas fa-sun"></i></button>
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
+          <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="hobbies.html">Hobbies</a></li>
+          <li class="nav-item"><a class="nav-link" href="accomplishments.html">Accomplishments</a></li>
+          <li class="nav-item ms-2">
+            <button id="darkModeToggle" class="dark-toggle">
+              <i class="fas fa-moon"></i>
+            </button>
           </li>
-          <!-- <li class="nav-item">
-            <button id="translateBtn" class="btn btn-outline-primary ms-2">Translate to Arabic</button>
-          </li> -->
         </ul>
       </div>
     </div>
   </nav>
 
+  <!-- ===== HERO ===== -->
   <header class="hero-section">
     <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <img src="images/profile.jpg" alt="Profile Picture" class="img-fluid rounded-circle profile-img" />
-        </div>
-        <div class="col-md-6">
-          <h1><span data-key="Hello, I'm">Hello, I'm</span> <span class="text-primary">Hassan Gebril</span></h1>
-          <p class="lead" data-key="Welcome to my personal portfolio website.">Welcome to my personal portfolio website.</p>
-          <div class="d-flex mt-3 gap-2">
-            <a href="about.html" class="btn hero-main-btn btn-primary" data-key="About Me">
-              About Me
-            </a>
+      <div class="row align-items-center g-5">
 
+        <!-- Text -->
+        <div class="col-lg-6 order-2 order-lg-1">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            Available for opportunities
+          </div>
+
+          <h1 class="hero-title">
+            <span class="greeting">Hello, I'm</span>
+            <span class="name">Hassan Gebril</span>
+          </h1>
+
+          <div class="typewriter-wrap">
+            <span class="typewriter-prefix">I build&nbsp;</span>
+            <span class="typewriter-text" id="typewriter-text">AI solutions</span>
+            <span class="typewriter-cursor"></span>
+          </div>
+
+          <p class="hero-desc">
+            Aspiring AI Engineer passionate about machine learning, creative problem-solving,
+            and building things that actually matter.
+          </p>
+
+          <div class="hero-actions">
+            <a href="about.html" class="btn btn-primary">
+              About Me <i class="fas fa-arrow-right ms-2"></i>
+            </a>
             <a href="https://drive.google.com/drive/folders/1PpwyqrEFpiQ_cHfw4pXXlBEPmE6P9rpv?usp=sharing"
-              target="_blank"
-              class="btn hero-main-btn cv-btn">
-              <i class="fas fa-file-alt"></i> CV
+               target="_blank" class="btn btn-cv">
+              <i class="fas fa-file-alt"></i> View CV
+            </a>
+            <a href="accomplishments.html" class="btn btn-glass">
+              My Work
             </a>
           </div>
 
+          <div class="hero-social">
+            <a href="https://www.linkedin.com/in/hassan-gebrill-98a08a299/" target="_blank"
+               class="social-btn linkedin" title="LinkedIn">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://www.youtube.com/@Hassan_G04" target="_blank"
+               class="social-btn youtube" title="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://github.com/HassanG04" target="_blank"
+               class="social-btn github" title="GitHub">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
         </div>
+
+        <!-- Image -->
+        <div class="col-lg-6 order-1 order-lg-2 d-flex justify-content-center">
+          <div class="hero-img-wrap">
+            <div class="hero-img-ring">
+              <div class="hero-img-inner">
+                <img src="images/profile.jpg" alt="Hassan Gebril – AI Engineer" />
+              </div>
+            </div>
+
+            <!-- Floating badges -->
+            <div class="float-badge b1">
+              <div class="badge-ico p"><i class="fas fa-brain"></i></div>
+              <div>
+                <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:1px;">Speciality</div>
+                <div>AI / ML</div>
+              </div>
+            </div>
+
+            <div class="float-badge b2">
+              <div class="badge-ico c"><i class="fas fa-code"></i></div>
+              <div>
+                <div style="font-size:.75rem;color:var(--text-muted);margin-bottom:1px;">Currently</div>
+                <div>Building cool stuff</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div class="d-flex justify-content-center gap-3 mt-3">
-        <a href="https://www.linkedin.com/in/hassan-gebrill-98a08a299/" target="_blank" class="social-btn"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://www.youtube.com/@Hassan_G04" target="_blank" class="social-btn"><i class="fab fa-youtube"></i></a>
-        <a href="https://github.com/HassanG04" target="_blank" class="social-btn"><i class="fab fa-github"></i></a>
-      </div>
-      <div class="text-center mt-3">
-      <a href="accomplishments.html" class="btn btn-outline-light btn-sm">
-        View Accomplishments
-      </a>
     </div>
+
+    <!-- Scroll hint -->
+    <div class="scroll-hint">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+      <span>Scroll</span>
     </div>
   </header>
 
-  <main class="container my-5">
-    <section class="mb-5">
-      <h2 class="text-center mb-4" data-key="Quick Introduction">Quick Introduction</h2>
-      <p data-key="I'm an aspiring AI student with passion for creativity, problem-solving, and development.">
-        I'm an aspiring AI student with passion for creativity, problem-solving, and development.
-      </p>
-    </section>
+  <!-- ===== MAIN ===== -->
+  <main>
 
-    <section class="mb-5">
-      <h2 class="text-center mb-4" data-key="My Skills">My Skills</h2>
-      <div class="row">
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title" data-key="Web Development">Web Development</h5>
-              <p class="card-text" data-key="Experience with HTML, CSS, JavaScript, and frameworks like Bootstrap.">Experience with HTML, CSS, JavaScript, and frameworks like Bootstrap.</p>
+    <!-- STATS -->
+    <section id="stats" class="section-wrap">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-6 col-md-3 reveal delay-1">
+            <div class="stat-card">
+              <span class="stat-number" data-count="16" data-suffix="+">0+</span>
+              <span class="stat-label">AI Projects</span>
             </div>
           </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title" data-key="Creative Thinking">Creative Thinking</h5>
-              <p class="card-text">
-                <span data-key="Experience with Video Editing, Problem solving and">Experience with Video Editing, Problem solving and</span>
-                <a href="hobbies.html" data-key="more!">more!</a>
-              </p>
+          <div class="col-6 col-md-3 reveal delay-2">
+            <div class="stat-card">
+              <span class="stat-number" data-count="3" data-suffix="+">0+</span>
+              <span class="stat-label">Certifications</span>
             </div>
           </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title" data-key="Design">Design</h5>
-              <p class="card-text" data-key="Creating visually appealing and user-friendly interfaces.">Creating visually appealing and user-friendly interfaces.</p>
+          <div class="col-6 col-md-3 reveal delay-3">
+            <div class="stat-card">
+              <span class="stat-number" data-count="25" data-suffix="th">0th</span>
+              <span class="stat-label">ICPC Ranking</span>
             </div>
           </div>
-        </div>
-        <div class="col-md-4 mb-4">
-          <div class="card h-100">
-            <div class="card-body">
-              <h5 class="card-title" data-key="Problem Solving">Problem Solving</h5>
-              <p class="card-text" data-key="Analytical thinking and creative solutions to complex problems.">Analytical thinking and creative solutions to complex problems.</p>
+          <div class="col-6 col-md-3 reveal delay-4">
+            <div class="stat-card">
+              <span class="stat-number" data-count="3" data-suffix="yr">0yr</span>
+              <span class="stat-label">Coding Experience</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="text-center">
-      <h2 class="mb-4" data-key="Want to know more?">Want to know more?</h2>
-      <button id="ctaButton" class="btn btn-lg btn-primary" data-key="Click Me!">Click Me!</button>
-      <p id="ctaResponse" class="mt-3"></p>
+    <!-- QUICK INTRO -->
+    <section class="section-wrap pt-0">
+      <div class="container">
+        <div class="intro-card reveal">
+          <span class="section-tag">Who I am</span>
+          <h2>Quick Introduction</h2>
+          <p>
+            I'm an aspiring AI Engineer studying at the Arab Academy for Science &amp; Technology,
+            with a passion for creativity, problem-solving, and building intelligent systems.
+            I love turning complex challenges into elegant, working solutions.
+          </p>
+        </div>
+      </div>
     </section>
+
+    <!-- SKILLS -->
+    <section class="section-wrap pt-0">
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <span class="section-tag">What I do</span>
+          <h2 class="section-heading">My <span class="grad-text">Skills</span></h2>
+          <p class="section-sub">A blend of technical depth and creative thinking</p>
+        </div>
+
+        <div class="row g-4">
+          <!-- AI & ML -->
+          <div class="col-md-6 col-lg-3 reveal delay-1">
+            <div class="skill-card">
+              <div class="skill-icon"><i class="fas fa-brain"></i></div>
+              <h5>AI &amp; Machine Learning</h5>
+              <p>Building and training models for image segmentation, action recognition, and NLP tasks.</p>
+              <div class="tag-row">
+                <span class="stag">Python</span>
+                <span class="stag">PyTorch</span>
+                <span class="stag">Keras</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Web Dev -->
+          <div class="col-md-6 col-lg-3 reveal delay-2">
+            <div class="skill-card">
+              <div class="skill-icon" style="background:rgba(34,211,238,.12);border-color:rgba(34,211,238,.2);color:var(--accent-cyan);">
+                <i class="fas fa-code"></i>
+              </div>
+              <h5>Web Development</h5>
+              <p>Building responsive, modern web apps with HTML, CSS, JS, and frameworks like Flask &amp; Django.</p>
+              <div class="tag-row">
+                <span class="stag">HTML</span>
+                <span class="stag">CSS</span>
+                <span class="stag">JavaScript</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Creative -->
+          <div class="col-md-6 col-lg-3 reveal delay-3">
+            <div class="skill-card">
+              <div class="skill-icon" style="background:rgba(244,114,182,.12);border-color:rgba(244,114,182,.2);color:var(--accent-pink);">
+                <i class="fas fa-paint-brush"></i>
+              </div>
+              <h5>Creative Design</h5>
+              <p>Crafting visually appealing interfaces and editing high-quality video content.</p>
+              <div class="tag-row">
+                <span class="stag">UI/UX</span>
+                <span class="stag">Video Editing</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Problem Solving -->
+          <div class="col-md-6 col-lg-3 reveal delay-4">
+            <div class="skill-card">
+              <div class="skill-icon" style="background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.2);color:var(--accent-green);">
+                <i class="fas fa-puzzle-piece"></i>
+              </div>
+              <h5>Problem Solving</h5>
+              <p>Competitive programming with analytical thinking and algorithmic expertise from ICPC.</p>
+              <div class="tag-row">
+                <span class="stag">Algorithms</span>
+                <span class="stag">Data Structures</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section-wrap pt-0">
+      <div class="container">
+        <div class="cta-card reveal">
+          <h2>Want to know more?</h2>
+          <p>I'm always open to new opportunities, collaborations, and interesting conversations.</p>
+          <button id="ctaButton" class="btn btn-white">
+            <i class="fas fa-paper-plane me-2"></i>Get in Touch
+          </button>
+          <div id="ctaResponse"></div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="bg-dark text-white text-center py-4">
-    <div class="container">
-      <p data-key="Hassan's portfolio. All rights reserved.">&copy; Hassan's portfolio. All rights reserved.</p>
-      <div class="social-links">
-        <a href="#" class="text-white mx-2"><i class="fab fa-linkedin"></i></a>
-        <a href="#" class="text-white mx-2"><i class="fab fa-github"></i></a>
-        <a href="#" class="text-white mx-2"><i class="fab fa-youtube"></i></a>
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container text-center">
+      <span class="footer-brand">HG.</span>
+      <p class="footer-tagline">Hassan Gebril — AI Engineer &amp; Creative Builder</p>
+      <div class="footer-social justify-content-center">
+        <a href="https://www.linkedin.com/in/hassan-gebrill-98a08a299/" target="_blank" class="social-btn linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/HassanG04" target="_blank" class="social-btn github">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.youtube.com/@Hassan_G04" target="_blank" class="social-btn youtube">
+          <i class="fab fa-youtube"></i>
+        </a>
       </div>
+      <div class="footer-divider"></div>
+      <p class="footer-copy">&copy; 2025 Hassan's Portfolio. All rights reserved.</p>
     </div>
   </footer>
-<div id="chatbot-bubble" class="chatbot-bubble">
-  <i class="fas fa-comments"></i>
-</div>
 
-<div id="chatbot-window" class="chatbot-window d-none">
-  <div class="chatbot-header">
-    <span>Hassan-bot (WIP)</span>
-    <button id="chatbot-close" class="btn-close btn-close-white btn-sm"></button>
+  <!-- CHATBOT -->
+  <div id="chatbot-bubble" class="chatbot-bubble">
+    <i class="fas fa-comments"></i>
   </div>
-  <div class="chatbot-body">
-    <div class="chatbot-message bot">
-      I am still learning Hassan's behavior since he's kinda quiet atm...
-      <br>
-      (I didn't make a chatbot yet but I will make it... &lt;eventually&gt;)
+  <div id="chatbot-window" class="chatbot-window d-none">
+    <div class="chatbot-header">
+      <span><i class="fas fa-robot me-2"></i>Hassan-bot (WIP)</span>
+      <button id="chatbot-close" class="btn-close btn-close-white btn-sm"></button>
+    </div>
+    <div class="chatbot-body">
+      <div class="chatbot-message bot">
+        Hey! I'm still learning Hassan's ways... 🤖<br />
+        (A proper chatbot is coming — eventually!)
+      </div>
     </div>
   </div>
-</div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>

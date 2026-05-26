@@ -1,109 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="images/thumbnail.jpg">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-key="About Me | Hassan's portfolio">About Me | Hassan's portfolio</title>
+  <title>About Me | Hassan Gebril – AI Engineer</title>
+  <meta name="description" content="Learn about Hassan Gebril – his story, education at AASTMT, and technical skills in AI and software engineering." />
+
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="apple-touch-icon" href="images/thumbnail.png" />
+
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+
+  <!-- PAGE LOADER -->
+  <div id="page-loader">
+    <div class="loader-inner">
+      <span class="loader-logo">HG.</span>
+      <div class="loader-ring"></div>
+    </div>
+  </div>
+
+  <!-- PARTICLE CANVAS -->
+  <canvas id="particle-canvas"></canvas>
+
+
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand" href="index.html" data-key="Hassan's portfolio">Hassan's portfolio</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <a class="navbar-brand" href="index.html">HG.</a>
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="home.html" data-key="Home">Home</a></li>
-          <li class="nav-item"><a class="nav-link active" href="about.html" data-key="About">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="hobbies.html" data-key="Hobbies">Hobbies</a></li>
-          <li class="nav-item"><a class="nav-link" href="accomplishments.html" data-key="Accomplishments">Accomplishments</a></li>
-          <li class="nav-item">
-            <button id="darkModeToggle" class="btn btn-primary dark-toggle"><i class="fas fa-sun"></i></button>
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="hobbies.html">Hobbies</a></li>
+          <li class="nav-item"><a class="nav-link" href="accomplishments.html">Accomplishments</a></li>
+          <li class="nav-item ms-2">
+            <button id="darkModeToggle" class="dark-toggle">
+              <i class="fas fa-moon"></i>
+            </button>
           </li>
-          <!-- <li class="nav-item">
-            <button id="translateBtn" class="btn btn-outline-primary ms-2">Translate to Arabic</button>
-          </li> -->
         </ul>
       </div>
     </div>
   </nav>
 
-  <main class="container mt-5 pt-5">
-    <div class="row">
-      <div class="col-lg-8 mx-auto">
-        <h1 class="text-center mb-4" data-key="About Me">About Me</h1>
-        <div class="profile-image-wrapper">
-          <img src="images/profile2.jpg" alt="Profile Picture" class="profile-image" />
-        </div>
+  <!-- ===== PAGE HERO ===== -->
+  <section class="page-hero">
+    <div class="container text-center">
+      <span class="section-tag reveal">My Story</span>
+      <h1 class="reveal delay-1">About <span class="grad-text">Me</span></h1>
+      <p class="reveal delay-2">A curious mind from Alexandria, driven by code and creativity.</p>
+    </div>
+  </section>
 
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="container pb-5">
 
+    <!-- Profile image centred -->
+    <div class="text-center mb-5 reveal">
+      <div class="profile-image-wrapper">
+        <img src="images/profile2.jpg" alt="Hassan Gebril" class="profile-image" />
+      </div>
+    </div>
+
+    <div class="row g-5 justify-content-center">
+
+      <!-- LEFT — Story + Education -->
+      <div class="col-lg-6 reveal-left">
+
+        <!-- My Story -->
         <section class="mb-5">
-          <h2 class="mb-3" data-key="My Story">My Story</h2>
-          <p data-key="I was born in Alexandria, Egypt. Went to Sidi Gaber Language School where I have met a lot of brothers. They got me into coding and made me love it!">
-            I was born in Alexandria, Egypt. Went to Sidi Gaber Language School where I have met a lot of amazing friends whom I refer to as my brothers. They got me into coding and showed me the art of problem solving and the unlimited creativity!
+          <span class="section-tag">Origins</span>
+          <h2 class="section-heading mb-3">My <span class="grad-text">Story</span></h2>
+          <p style="line-height:1.9;">
+            I was born and raised in <strong style="color:var(--text-primary)">Alexandria, Egypt</strong> —
+            a city that shaped my love for both heritage and innovation. I attended
+            Sidi Gaber Language School where I met the people who would become my brothers;
+            they introduced me to coding and showed me the art of problem-solving.
           </p>
-          <p data-key="That's why I entered this field, because it's fun!">That's why I entered this field, because it's creative!</p>
+          <p class="mt-3" style="line-height:1.9;">
+            That spark of creativity is why I chose this field. To me, software isn't just
+            logic — it's an unlimited canvas for imagination.
+          </p>
         </section>
 
+        <!-- Education Timeline -->
         <section class="mb-5">
-          <h2 class="mb-3" data-key="Education">Education</h2>
-          <div class="card mb-3">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-8">
-                  <h5 class="card-title" data-key="Arab Academy for Science and Technology">Arab Academy for Science and Technology</h5>
-                  <h6 class="card-subtitle mb-2 text-muted" data-key="Artificial Intelligence Degree, Data Science">Artificial Intelligence Degree, Data Science</h6>
-                  <p class="card-text">
-                    <span data-key="4 Years, Participated in:">Communities:</span>
-                    <ol>
-                      <li data-key="RoboCup junior">RoboCup junior community.</li>
-                      <li data-key="ECPC">Egypt Colligate Programming Contest community.</li>
-                      <li data-key="SkyXperts">SkyXperts community.</li>
-                    </ol>
-                  </p>
+          <span class="section-tag">Academic Path</span>
+          <h2 class="section-heading mb-4">Education</h2>
+          <div class="timeline">
+
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-card">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <img src="images/AASTMT_Logo.png" alt="AASTMT"
+                       style="width:48px;height:48px;object-fit:contain;border-radius:10px;background:#fff;padding:4px;" />
+                  <div>
+                    <div class="timeline-year">2023 — Present</div>
+                    <div class="timeline-title">Arab Academy for Science &amp; Technology</div>
+                  </div>
                 </div>
-                <div class="col-md-4 d-flex flex-column align-items-center justify-content-center">
-                  <img src="images/AASTMT_Logo.png" alt="University Logo" class="rounded-circle img-fluid mb-2" />
-                </div>
+                <div class="timeline-sub">B.Sc. Artificial Intelligence — Data Science Track</div>
+                <p style="font-size:.88rem;margin-bottom:12px;">
+                  Currently pursuing my degree with a focus on machine learning, computer vision,
+                  and NLP. Active in multiple technical communities:
+                </p>
+                <ul class="community-list">
+                  <li>RoboCup Junior community</li>
+                  <li>Egypt Collegiate Programming Contest (ECPC) community</li>
+                  <li>SkyXperts Drone &amp; Robotics community</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <div class="timeline-dot" style="background:var(--gradient-purple);"></div>
+              <div class="timeline-card">
+                <div class="timeline-year">2009 — 2022</div>
+                <div class="timeline-title">Sidi Gaber Language School</div>
+                <div class="timeline-sub">STEM &amp; Language Specialisation</div>
+                <p style="font-size:.88rem;">
+                  Where the journey began — formed lifelong friendships and discovered
+                  a deep love for technology and creative expression.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+      </div>
+
+      <!-- RIGHT — Skills -->
+      <div class="col-lg-6 reveal-right">
+
+        <section class="mb-5">
+          <span class="section-tag">Technical Expertise</span>
+          <h2 class="section-heading mb-4">Skills &amp; <span class="grad-text">Proficiency</span></h2>
+
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-head">
+              <span class="skill-bar-lbl"><i class="fas fa-brain me-2" style="color:var(--accent-purple);"></i>Machine Learning &amp; AI</span>
+              <span class="skill-bar-pct">85%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-pct="85"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-head">
+              <span class="skill-bar-lbl"><i class="fab fa-python me-2" style="color:var(--accent-cyan);"></i>Python</span>
+              <span class="skill-bar-pct">90%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-pct="90" style="background:linear-gradient(135deg,#22d3ee,#06b6d4);"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-head">
+              <span class="skill-bar-lbl"><i class="fas fa-code me-2" style="color:var(--accent-pink);"></i>Web Development</span>
+              <span class="skill-bar-pct">80%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-pct="80" style="background:linear-gradient(135deg,#f472b6,#ec4899);"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-head">
+              <span class="skill-bar-lbl"><i class="fas fa-puzzle-piece me-2" style="color:var(--accent-green);"></i>Problem Solving</span>
+              <span class="skill-bar-pct">88%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-pct="88" style="background:linear-gradient(135deg,#34d399,#059669);"></div>
+            </div>
+          </div>
+
+          <div class="skill-bar-wrap">
+            <div class="skill-bar-head">
+              <span class="skill-bar-lbl"><i class="fas fa-network-wired me-2" style="color:#fb923c;"></i>Networking (CCNA)</span>
+              <span class="skill-bar-pct">75%</span>
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-pct="75" style="background:linear-gradient(135deg,#fb923c,#f59e0b);"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Quick facts -->
+        <section>
+          <span class="section-tag">Quick Facts</span>
+          <h2 class="section-heading mb-4">At a <span class="grad-text">Glance</span></h2>
+          <div class="row g-3">
+            <div class="col-6">
+              <div class="timeline-card text-center py-4">
+                <div style="font-size:1.8rem;margin-bottom:8px;">🏆</div>
+                <div style="font-weight:700;font-size:.95rem;">ICPC 25th Place</div>
+                <div style="font-size:.8rem;color:var(--text-muted);">Regional Qualifier</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="timeline-card text-center py-4">
+                <div style="font-size:1.8rem;margin-bottom:8px;">🤖</div>
+                <div style="font-weight:700;font-size:.95rem;">NLP Internship</div>
+                <div style="font-size:.8rem;color:var(--text-muted);">Cellula Robotics</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="timeline-card text-center py-4">
+                <div style="font-size:1.8rem;margin-bottom:8px;">🌐</div>
+                <div style="font-weight:700;font-size:.95rem;">CCNA Certified</div>
+                <div style="font-size:.8rem;color:var(--text-muted);">Cisco Networking</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="timeline-card text-center py-4">
+                <div style="font-size:1.8rem;margin-bottom:8px;">🎯</div>
+                <div style="font-weight:700;font-size:.95rem;">16 AI Projects</div>
+                <div style="font-size:.8rem;color:var(--text-muted);">Production-ready</div>
               </div>
             </div>
           </div>
         </section>
+
       </div>
     </div>
   </main>
 
-  <footer class="bg-dark text-white text-center py-4">
-    <div class="container">
-      <p data-key="2023 My Portfolio. All rights reserved.">&copy; 2023 My Portfolio. All rights reserved.</p>
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container text-center">
+      <span class="footer-brand">HG.</span>
+      <p class="footer-tagline">Hassan Gebril — AI Engineer &amp; Creative Builder</p>
+      <div class="footer-social justify-content-center">
+        <a href="https://www.linkedin.com/in/hassan-gebrill-98a08a299/" target="_blank" class="social-btn linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="https://github.com/HassanG04" target="_blank" class="social-btn github">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.youtube.com/@Hassan_G04" target="_blank" class="social-btn youtube">
+          <i class="fab fa-youtube"></i>
+        </a>
+      </div>
+      <div class="footer-divider"></div>
+      <p class="footer-copy">&copy; 2025 Hassan's Portfolio. All rights reserved.</p>
     </div>
   </footer>
-<div id="chatbot-bubble" class="chatbot-bubble">
-  <i class="fas fa-comments"></i>
-</div>
 
-<div id="chatbot-window" class="chatbot-window d-none">
-  <div class="chatbot-header">
-    <span>Hassan-bot (WIP)</span>
-    <button id="chatbot-close" class="btn-close btn-close-white btn-sm"></button>
-  </div>
-  <div class="chatbot-body">
-    <div class="chatbot-message bot">
-      I am still learning Hassan's behavior since he's kinda quiet atm...
-      <br>
-      (I didn't make a chatbot yet but I will make it... &lt;eventually&gt;)
+  <!-- CHATBOT -->
+  <div id="chatbot-bubble" class="chatbot-bubble"><i class="fas fa-comments"></i></div>
+  <div id="chatbot-window" class="chatbot-window d-none">
+    <div class="chatbot-header">
+      <span><i class="fas fa-robot me-2"></i>Hassan-bot (WIP)</span>
+      <button id="chatbot-close" class="btn-close btn-close-white btn-sm"></button>
+    </div>
+    <div class="chatbot-body">
+      <div class="chatbot-message bot">
+        Hey! I'm still learning Hassan's ways... 🤖<br />
+        (A proper chatbot is coming — eventually!)
+      </div>
     </div>
   </div>
-</div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>
-  
 </body>
 </html>

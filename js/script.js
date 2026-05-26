@@ -1,124 +1,382 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // ========== DARK MODE ==========
-    function initializeDarkMode() {
-        const isDark = localStorage.getItem('dark-mode') === 'enabled';
-        const icon = document.querySelector('#darkModeToggle i');
-        if (isDark) {
-            document.body.classList.add('dark-mode');
-            icon.classList.replace('fa-sun', 'fa-moon');
-        } else {
-            document.body.classList.remove('dark-mode');
-            icon.classList.replace('fa-moon', 'fa-sun');
+
+  /* ============================================================
+     PAGE LOADER
+     ============================================================ */
+  const loader = document.getElementById('page-loader');
+  if (loader) {
+    window.addEventListener('load', () => {
+      setTimeout(() => loader.classList.add('hidden'), 400);
+    });
+    // Fallback
+    setTimeout(() => loader && loader.classList.add('hidden'), 2500);
+  }
+
+  /* ============================================================
+     DARK MODE — default ON
+     ============================================================ */
+  function initDarkMode() {
+    const stored = localStorage.getItem('dark-mode');
+    // Default dark
+    if (stored === null) localStorage.setItem('dark-mode', 'enabled');
+    const isDark = localStorage.getItem('dark-mode') === 'enabled';
+    document.body.classList.toggle('dark-mode', isDark);
+    updateToggleIcon(isDark);
+  }
+
+  function updateToggleIcon(isDark) {
+    const icon = document.querySelector('#darkModeToggle i');
+    if (!icon) return;
+    icon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+  }
+
+  initDarkMode();
+
+  const darkBtn = document.getElementById('darkModeToggle');
+  if (darkBtn) {
+    darkBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      const isDark = document.body.classList.contains('dark-mode');
+      localStorage.setItem('dark-mode', isDark ? 'enabled' : 'disabled');
+      updateToggleIcon(isDark);
+    });
+  }
+
+  /* ============================================================
+     NAVBAR — scroll behaviour
+     ============================================================ */
+  const navbar = document.querySelector('.navbar');
+  if (navbar) {
+    const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+
+  /* ============================================================
+     ACTIVE NAV LINK
+     ============================================================ */
+  const currentPage = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-link').forEach(link => {
+    const href = link.getAttribute('href');
+    link.classList.toggle('active',
+      href === currentPage ||
+      (currentPage === '' && href === 'index.html') ||
+      (currentPage === 'index.html' && href === 'index.html')
+    );
+  });
+
+  /* ============================================================
+     PARTICLE CANVAS
+     ============================================================ */
+  const canvas = document.getElementById('particle-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let W = canvas.width  = window.innerWidth;
+    let H = canvas.height = window.innerHeight;
+    window.addEventListener('resize', () => {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    });
+
+    const COLORS = ['#8b5cf6', '#22d3ee', '#f472b6', '#a78bfa', '#34d399'];
+    const NUM = Math.min(Math.floor(W * H / 15000), 80);
+
+    const particles = Array.from({ length: NUM }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - .5) * .35,
+      vy: (Math.random() - .5) * .35,
+      r: Math.random() * 1.8 + .6,
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      alpha: Math.random() * .5 + .15,
+    }));
+
+    let mouseX = -999, mouseY = -999;
+    document.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+
+    function drawParticles() {
+      ctx.clearRect(0, 0, W, H);
+      particles.forEach(p => {
+        // Gentle mouse repulsion
+        const dx = p.x - mouseX, dy = p.y - mouseY;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 100) {
+          const force = (100 - dist) / 100 * .4;
+          p.vx += (dx / dist) * force;
+          p.vy += (dy / dist) * force;
         }
-    }
+        // Speed damping
+        p.vx *= .98; p.vy *= .98;
+        p.x += p.vx; p.y += p.vy;
+        // Wrap
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
 
-    initializeDarkMode();
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = p.alpha;
+        ctx.fill();
+      });
 
-    const darkToggleBtn = document.getElementById('darkModeToggle');
-    if (darkToggleBtn) {
-        darkToggleBtn.addEventListener('click', function () {
-            document.body.classList.toggle('dark-mode');
-            const isEnabled = document.body.classList.contains('dark-mode');
-            localStorage.setItem('dark-mode', isEnabled ? 'enabled' : 'disabled');
-            const icon = this.querySelector('i');
-            icon.classList.toggle('fa-moon');
-            icon.classList.toggle('fa-sun');
-        });
-    }
-
-    // ========== CTA BUTTON ==========
-    const ctaButton = document.getElementById('ctaButton');
-    if (ctaButton) {
-        ctaButton.addEventListener('click', function () {
-            const responses = [
-                "Fun Fact: I love RTS videogames!",
-                "My LinkedIn would feel honored to have you!",
-                "Feel free to ask me for anything.",
-                "Check the Hobbies.",
-                "Don't hesitate to contact me."
-            ];
-            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
-            document.getElementById('ctaResponse').textContent = randomResponse;
-
-            if (ctaButton.textContent === 'Click Me!') {
-                ctaButton.textContent = 'Click again!';
-            }
-        });
-    }
-
-    // ========== ACTIVE NAV LINK ==========
-    const currentPage = location.pathname.split('/').pop();
-    if (currentPage) {
-        document.querySelectorAll('.nav-link').forEach(link => {
-            if (link.getAttribute('href') === currentPage) {
-                link.classList.add('active');
-            } else {
-                link.classList.remove('active');
-            }
-        });
-    }
-
-    // ========== TRANSLATION TOGGLE ==========
-    // ========== GOOGLE TRANSLATE REDIRECT ==========
-    const translateBtn = document.getElementById('translateBtn');
-    if (translateBtn) {
-        translateBtn.addEventListener('click', function () {
-            const url = window.location.href;
-            const translatedUrl =
-                "https://translate.google.com/translate?sl=en&tl=ar&u=" +
-                encodeURIComponent(url);
-
-            // open Arabic-translated version in a new tab
-            window.open(translatedUrl, "_blank");
-        });
-    }
-
-    // ========== CHATBOT BUBBLE ==========
-    const bubble = document.getElementById("chatbot-bubble");
-    const chatWindow = document.getElementById("chatbot-window");
-    const chatClose = document.getElementById("chatbot-close");
-
-    if (bubble && chatWindow) {
-        // toggle
-        bubble.addEventListener("click", () => {
-            chatWindow.classList.toggle("d-none");
-        });
-
-        if (chatClose) {
-            chatClose.addEventListener("click", () => {
-                chatWindow.classList.add("d-none");
-            });
+      // Connection lines
+      ctx.globalAlpha = 1;
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 120) {
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = particles[i].color;
+            ctx.globalAlpha = (1 - d / 120) * .12;
+            ctx.lineWidth = .6;
+            ctx.stroke();
+          }
         }
-
-        // drag
-        let isDragging = false;
-        let offsetX = 0;
-        let offsetY = 0;
-
-        bubble.addEventListener("mousedown", (e) => {
-            isDragging = true;
-            const rect = bubble.getBoundingClientRect();
-            offsetX = e.clientX - rect.left;
-            offsetY = e.clientY - rect.top;
-        });
-
-        document.addEventListener("mousemove", (e) => {
-            if (!isDragging) return;
-
-            const x = e.clientX - offsetX;
-            const y = e.clientY - offsetY;
-
-            const maxX = window.innerWidth - bubble.offsetWidth - 5;
-            const maxY = window.innerHeight - bubble.offsetHeight - 5;
-
-            bubble.style.left = Math.max(5, Math.min(x, maxX)) + "px";
-            bubble.style.top = Math.max(5, Math.min(y, maxY)) + "px";
-            bubble.style.right = "auto";
-            bubble.style.bottom = "auto";
-        });
-
-        document.addEventListener("mouseup", () => {
-            isDragging = false;
-        });
+      }
+      ctx.globalAlpha = 1;
+      requestAnimationFrame(drawParticles);
     }
+    drawParticles();
+  }
+
+
+
+  /* ============================================================
+     TYPEWRITER EFFECT
+     ============================================================ */
+  const target = document.getElementById('typewriter-text');
+  if (target) {
+    const words = ['AI Engineer', 'Problem Solver', 'Creative Thinker', 'ML Developer', 'Web Builder'];
+    let wi = 0, ci = 0, deleting = false;
+    function type() {
+      const word = words[wi];
+      if (!deleting) {
+        target.textContent = word.slice(0, ++ci);
+        if (ci === word.length) { deleting = true; setTimeout(type, 1800); return; }
+        setTimeout(type, 90);
+      } else {
+        target.textContent = word.slice(0, --ci);
+        if (ci === 0) { deleting = false; wi = (wi + 1) % words.length; setTimeout(type, 400); return; }
+        setTimeout(type, 45);
+      }
+    }
+    setTimeout(type, 800);
+  }
+
+  /* ============================================================
+     SCROLL REVEAL (Intersection Observer)
+     ============================================================ */
+  const revealEls = document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+  if (revealEls.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+  }
+
+  /* ============================================================
+     ANIMATED COUNTERS
+     ============================================================ */
+  function animateCounter(el, target, duration = 1800) {
+    let start = 0;
+    const step = timestamp => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.floor(ease * target) + (el.dataset.suffix || '');
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const counterEls = document.querySelectorAll('[data-count]');
+  if (counterEls.length) {
+    const counterObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const el = e.target;
+          animateCounter(el, parseInt(el.dataset.count));
+          counterObs.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counterEls.forEach(el => counterObs.observe(el));
+  }
+
+  /* ============================================================
+     SKILL BARS
+     ============================================================ */
+  const bars = document.querySelectorAll('.skill-bar-fill');
+  if (bars.length) {
+    const barObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.width = e.target.dataset.pct + '%';
+          barObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    bars.forEach(b => barObs.observe(b));
+  }
+
+  /* ============================================================
+     CONTACT MODAL INJECTION & CTA BUTTON
+     ============================================================ */
+  const ctaBtn = document.getElementById('ctaButton');
+  if (ctaBtn) {
+    const modalHtml = `
+    <div class="modal fade" id="contactModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content glass-modal">
+          <div class="modal-header border-0 pb-0">
+            <h5 class="modal-title section-heading mb-0" style="font-size:1.5rem;">Let's <span class="grad-text">Connect</span></h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p class="text-secondary mb-4">Feel free to drop a message. I'm always open to discussing new opportunities or interesting projects!</p>
+            <form id="contactForm">
+              <div class="mb-3">
+                <input type="text" class="form-control glass-input" placeholder="Your Name" required>
+              </div>
+              <div class="mb-3">
+                <input type="email" class="form-control glass-input" placeholder="Your Email" required>
+              </div>
+              <div class="mb-3">
+                <textarea class="form-control glass-input" rows="4" placeholder="Your Message" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100" style="border:none;">Send Message <i class="fas fa-paper-plane ms-2"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    `;
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+    const contactModal = new bootstrap.Modal(document.getElementById('contactModal'));
+    
+    ctaBtn.addEventListener('click', () => {
+      contactModal.show();
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('button[type="submit"]');
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+        btn.classList.replace('btn-primary', 'btn-cv');
+        setTimeout(() => {
+          contactModal.hide();
+          btn.innerHTML = originalText;
+          btn.classList.replace('btn-cv', 'btn-primary');
+          e.target.reset();
+        }, 2000);
+      }, 1500);
+    });
+  }
+
+  /* ============================================================
+     CHATBOT
+     ============================================================ */
+  const bubble    = document.getElementById('chatbot-bubble');
+  const chatWin   = document.getElementById('chatbot-window');
+  const chatClose = document.getElementById('chatbot-close');
+  const chatBody  = document.querySelector('.chatbot-body');
+
+  if (bubble && chatWin) {
+    bubble.addEventListener('click', () => {
+      chatWin.classList.toggle('d-none');
+      if (!chatWin.classList.contains('d-none') && !chatWin.dataset.initialized) {
+        initChatbot();
+        chatWin.dataset.initialized = 'true';
+      }
+    });
+    if (chatClose) chatClose.addEventListener('click', () => chatWin.classList.add('d-none'));
+
+    // Functional Logic
+    function initChatbot() {
+      if (!chatBody) return;
+      const headerSpan = document.querySelector('.chatbot-header span');
+      if (headerSpan) headerSpan.innerHTML = '<i class="fas fa-robot me-2"></i>Hassan-bot';
+
+      chatBody.innerHTML = `
+        <div class="chatbot-message bot mb-3">
+          Hi! I'm Hassan-bot 🤖. I can answer quick questions about Hassan. What would you like to know?
+        </div>
+        <div id="chat-options" class="d-flex flex-column gap-2 mt-2">
+          <button class="btn btn-sm btn-outline-primary text-start chat-opt" data-ans="I am an AI engineering student at AASTMT with a passion for machine learning, computer vision, and creative web development.">Who is Hassan?</button>
+          <button class="btn btn-sm btn-outline-primary text-start chat-opt" data-ans="I specialize in Python, PyTorch, web development (HTML/CSS/JS), and solving complex algorithmic problems (ICPC competitor).">What are your skills?</button>
+          <button class="btn btn-sm btn-outline-primary text-start chat-opt" data-ans="You can reach out to me via my LinkedIn or email. Just hit the 'Click Me!' button on the home page or use the footer links!">How can I contact you?</button>
+        </div>
+      `;
+
+      document.querySelectorAll('.chat-opt').forEach(btn => {
+         btn.addEventListener('click', (e) => {
+            const question = e.target.innerText;
+            const answer = e.target.getAttribute('data-ans');
+            
+            // Add user message
+            const userMsg = document.createElement('div');
+            userMsg.className = 'chatbot-message user mt-3 text-end mb-2';
+            userMsg.innerHTML = `<span style="background:var(--accent-purple);color:#fff;padding:8px 12px;border-radius:12px 12px 4px 12px;display:inline-block;font-size:0.86rem;max-width:85%;"><strong>You:</strong> ${question}</span>`;
+            
+            // Add bot answer
+            const botMsg = document.createElement('div');
+            botMsg.className = 'chatbot-message bot mb-3';
+            botMsg.innerHTML = `<strong>Hassan-bot:</strong><br/>${answer}`;
+            
+            chatBody.insertBefore(userMsg, document.getElementById('chat-options'));
+            chatBody.insertBefore(botMsg, document.getElementById('chat-options'));
+            userMsg.scrollIntoView({ behavior: 'smooth', block: 'start' });
+         });
+      });
+    }
+
+    // Drag
+    let dragging = false, ox = 0, oy = 0;
+    bubble.addEventListener('mousedown', e => {
+      dragging = true;
+      const r = bubble.getBoundingClientRect();
+      ox = e.clientX - r.left; oy = e.clientY - r.top;
+    });
+    document.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      const x = Math.max(5, Math.min(e.clientX - ox, window.innerWidth  - bubble.offsetWidth  - 5));
+      const y = Math.max(5, Math.min(e.clientY - oy, window.innerHeight - bubble.offsetHeight - 5));
+      bubble.style.left = x+'px'; bubble.style.top = y+'px';
+      bubble.style.right = 'auto'; bubble.style.bottom = 'auto';
+    });
+    document.addEventListener('mouseup', () => { dragging = false; });
+  }
+
+  /* ============================================================
+     SMOOTH SCROLL HINT
+     ============================================================ */
+  const scrollHint = document.querySelector('.scroll-hint');
+  if (scrollHint) {
+    scrollHint.addEventListener('click', () => {
+      const next = document.querySelector('main') || document.querySelector('#stats');
+      if (next) next.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  /* ============================================================
+     MAGNETIC BUTTONS (subtle)
+     ============================================================ */
+  document.querySelectorAll('.btn-primary,.btn-cv').forEach(btn => {
+    btn.addEventListener('mousemove', e => {
+      const r = btn.getBoundingClientRect();
+      const x = e.clientX - r.left - r.width  / 2;
+      const y = e.clientY - r.top  - r.height / 2;
+      btn.style.transform = `translate(${x * .12}px,${y * .12}px) translateY(-3px) scale(1.02)`;
+    });
+    btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+
 });
